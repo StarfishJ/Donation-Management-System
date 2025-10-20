@@ -1,0 +1,190 @@
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Increase base font sizing for the whole document */
+html { font-size: 16px; }
+
+/* Ant Design specific sizing adjustments */
+.ant-typography { font-size: 16px; }
+.ant-card-head-title { font-size: 18px; }
+.ant-card-body { font-size: 16px; }
+.ant-table { font-size: 16px; }
+.ant-table-thead > tr > th { font-size: 14px; }
+.ant-menu-item, .ant-menu-submenu-title { font-size: 16px; }
+.ant-form-item-label > label { font-size: 14px; }
+.ant-input, .ant-select-selection-item, .ant-input-number-input, .ant-picker-input > input { font-size: 16px; }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.ant-layout-sider {
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.ant-layout-header {
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+
+.ant-card {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+}
+
+.ant-table-thead > tr > th {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+/* Zebra stripe and hover highlight */
+.ant-table-tbody > tr:nth-child(odd) > td {
+  background-color: #fcfcfc;
+}
+.ant-table-tbody > tr:hover > td {
+  background-color: #f5faff !important;
+}
+
+/* Buttons and inputs rounding */
+.ant-btn, .ant-input, .ant-select-selector, .ant-input-number, .ant-picker {
+  border-radius: 6px !important;
+}
+
+/* Headings and paragraphs spacing */
+h1, h2, h3 {
+  line-height: 1.3;
+}
+h1 { font-size: 26px; }
+h2 { font-size: 22px; }
+h3 { font-size: 18px; }
+p {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+}
+
+.ant-btn-primary:hover {
+  background: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.ant-statistic-content {
+  font-size: 24px;
+}
+
+/* Slightly larger table text for readability */
+.ant-table {
+  font-size: 14px;
+}
+
+/* Button comfortable padding */
+.ant-btn {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.ant-tag {
+  border-radius: 4px;
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+  background-color: #1890ff;
+}
+
+.ant-modal-header {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.ant-modal-footer {
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ant-layout-sider {
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .ant-layout-content {
+    margin-left: 0 !important;
+  }
+  
+  .ant-table {
+    font-size: 12px;
+  }
+  
+  .ant-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Custom styles */
+.dashboard-card {
+  transition: all 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.report-summary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.report-summary .ant-statistic-title {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.report-summary .ant-statistic-content {
+  color: white;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.error-container {
+  text-align: center;
+  padding: 50px;
+}
+
+.success-message {
+  color: #52c41a;
+}
+
+.error-message {
+  color: #ff4d4f;
+}
+
+.warning-message {
+  color: #faad14;
+}
