@@ -22,20 +22,20 @@ import com.donation.service.DistributionService;
 import jakarta.validation.Valid;
 
 /**
- * 分发记录控制器
- * 处理分发记录相关的HTTP请求
+ * Distribution Controller
+ * Handles distribution record related HTTP requests
  */
 @RestController
 @RequestMapping("/api/distributions")
-@CrossOrigin(origins = "http://localhost:3000") // 允许前端访问
+@CrossOrigin(origins = "http://localhost:3000") // allow frontend access
 public class DistributionController {
     
     @Autowired
     private DistributionService distributionService;
     
     /**
-     * 获取所有分发记录
-     * @return 分发记录列表
+     * Get all distribution records
+     * @return distribution record list
      */
     @GetMapping
     public ResponseEntity<List<DistributionDTO>> getAllDistributions() {
@@ -44,9 +44,9 @@ public class DistributionController {
     }
     
     /**
-     * 根据ID获取分发记录
-     * @param id 分发记录ID
-     * @return 分发记录信息
+     * Get distribution record by ID
+     * @param id distribution record ID
+     * @return distribution record information
      */
     @GetMapping("/{id}")
     public ResponseEntity<DistributionDTO> getDistributionById(@PathVariable Long id) {
@@ -56,9 +56,9 @@ public class DistributionController {
     }
     
     /**
-     * 根据捐赠记录ID获取分发记录
-     * @param donationId 捐赠记录ID
-     * @return 该捐赠记录的所有分发记录
+    * Get distribution records by donation ID
+     * @param donationId donation record ID
+     * @return all distribution records for the donation
      */
     @GetMapping("/donation/{donationId}")
     public ResponseEntity<List<DistributionDTO>> getDistributionsByDonationId(@PathVariable Long donationId) {
@@ -67,9 +67,9 @@ public class DistributionController {
     }
     
     /**
-     * 创建新分发记录
-     * @param distributionDTO 分发记录信息
-     * @return 创建的分发记录信息
+     * Create new distribution record
+     * @param distributionDTO distribution record information
+     * @return created distribution record information
      */
     @PostMapping
     public ResponseEntity<DistributionDTO> createDistribution(@Valid @RequestBody DistributionDTO distributionDTO) {
@@ -82,10 +82,10 @@ public class DistributionController {
     }
     
     /**
-     * 更新分发记录
-     * @param id 分发记录ID
-     * @param distributionDTO 更新的分发记录信息
-     * @return 更新后的分发记录信息
+     * Update distribution record
+     * @param id distribution record ID
+     * @param distributionDTO updated distribution record information
+     * @return updated distribution record information
      */
     @PutMapping("/{id}")
     public ResponseEntity<DistributionDTO> updateDistribution(@PathVariable Long id, 
@@ -100,9 +100,9 @@ public class DistributionController {
     }
     
     /**
-     * 删除分发记录
-     * @param id 分发记录ID
-     * @return 删除结果
+     * Delete distribution record
+     * @param id distribution record ID
+     * @return deletion result
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDistribution(@PathVariable Long id) {
@@ -112,9 +112,9 @@ public class DistributionController {
     }
     
     /**
-     * 获取指定捐赠记录的总分发数量
-     * @param donationId 捐赠记录ID
-     * @return 总分发数量
+    * Get total distributed quantity for a donation
+     * @param donationId donation record ID
+     * @return total distributed quantity for the donation
      */
     @GetMapping("/donation/{donationId}/total")
     public ResponseEntity<Double> getTotalDistributedQuantity(@PathVariable Long donationId) {
@@ -123,9 +123,9 @@ public class DistributionController {
     }
     
     /**
-     * 获取指定捐赠记录的剩余数量
-     * @param donationId 捐赠记录ID
-     * @return 剩余数量
+    * Get remaining quantity for a donation
+     * @param donationId donation record ID
+     * @return remaining quantity for the donation
      */
     @GetMapping("/donation/{donationId}/remaining")
     public ResponseEntity<Double> getRemainingQuantity(@PathVariable Long donationId) {
@@ -134,8 +134,8 @@ public class DistributionController {
     }
     
     /**
-     * 获取所有分发记录的汇总统计
-     * @return 分发统计信息
+    * Get summary statistics for all distribution records
+     * @return distribution summary information
      */
     @GetMapping("/summary")
     public ResponseEntity<Object[]> getDistributionSummary() {

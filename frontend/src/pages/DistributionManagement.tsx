@@ -70,7 +70,7 @@ const DistributionManagement: React.FC = () => {
 
   const handleEdit = (distribution: Distribution) => {
     setEditingDistribution(distribution);
-    // 解析 recipientInfo 字段到各个子字段
+    // Parse recipientInfo field to sub-fields
     const recipientInfo = distribution.recipientInfo || '';
     const nameMatch = recipientInfo.match(/Name:\s*([^\n]+)/);
     const contactMatch = recipientInfo.match(/Contact:\s*([^\n]+)/);
@@ -107,7 +107,7 @@ const DistributionManagement: React.FC = () => {
         message.error(`Distributed quantity exceeds remaining (${remaining}).`);
         return;
       }
-      // 直接发送分离的字段，不合并
+      // Send separated fields directly, no merging
       const submitData = {
         donationId: values.donationId,
         quantityDistributed: values.quantityDistributed,
@@ -117,7 +117,7 @@ const DistributionManagement: React.FC = () => {
         notes: values.notes
       };
       
-      console.log('Submitting data:', submitData); // 调试日志
+      console.log('Submitting data:', submitData); // Debug log
       
       if (editingDistribution) {
         await distributionApi.update(editingDistribution.id!, submitData);

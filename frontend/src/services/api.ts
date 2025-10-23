@@ -9,7 +9,7 @@ import { Donor, Donation, Distribution, InventoryReport, DonorReport, SystemStat
 // Create axios instance
 const api = axios.create({
   baseURL: '/api',
-  timeout: 10000,
+  timeout: 10000, // 10 seconds
   headers: {
     'Content-Type': 'application/json',
   },

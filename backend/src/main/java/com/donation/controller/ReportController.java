@@ -15,20 +15,20 @@ import com.donation.dto.InventoryReportDTO;
 import com.donation.service.ReportService;
 
 /**
- * 报告控制器
- * 处理报告相关的HTTP请求
+ * Report Controller
+ * Handles report related HTTP requests
  */
 @RestController
 @RequestMapping("/api/reports")
-@CrossOrigin(origins = "http://localhost:3000") // 允许前端访问
+@CrossOrigin(origins = "http://localhost:3000") // allow frontend access
 public class ReportController {
     
     @Autowired
     private ReportService reportService;
     
     /**
-     * 生成库存报告
-     * @return 库存报告列表
+    * Generate inventory report
+     * @return inventory report list
      */
     @GetMapping("/inventory")
     public ResponseEntity<List<InventoryReportDTO>> generateInventoryReport() {
@@ -37,8 +37,8 @@ public class ReportController {
     }
     
     /**
-     * 生成捐赠者报告
-     * @return 捐赠者报告列表
+    * Generate donor report
+     * @return donor report list
      */
     @GetMapping("/donors")
     public ResponseEntity<List<DonorReportDTO>> generateDonorReport() {
@@ -47,8 +47,8 @@ public class ReportController {
     }
     
     /**
-     * 获取系统统计信息
-     * @return 统计信息
+    * Get system statistics
+     * @return statistics information
      */
     @GetMapping("/statistics")
     public ResponseEntity<Object> getSystemStatistics(@RequestParam(name = "days", required = false) Integer days) {

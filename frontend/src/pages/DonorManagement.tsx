@@ -58,7 +58,7 @@ const DonorManagement: React.FC = () => {
 
   const handleEdit = (donor: Donor) => {
     setEditingDonor(donor);
-    // 解析 contactInfo 字段到各个子字段
+    // parse contactInfo field into sub-fields
     const contactInfo = donor.contactInfo || '';
     const phoneMatch = contactInfo.match(/Phone:\s*([^\n]+)/);
     const emailMatch = contactInfo.match(/Email:\s*([^\n]+)/);
@@ -86,7 +86,7 @@ const DonorManagement: React.FC = () => {
 
   const handleSubmit = async (values: any) => {
     try {
-      // 合并联系方式字段
+      // Merge contact information fields
       const contactInfo = `Phone: ${values.phone}\nEmail: ${values.email || 'N/A'}\nAddress: ${values.address}`;
       
       const submitData = {
@@ -113,7 +113,7 @@ const DonorManagement: React.FC = () => {
     loadDonors();
   };
 
-  // 解析联系方式字段
+  // Parse contact information fields
   const parseContactInfo = (contactInfo: string) => {
     const phoneMatch = contactInfo?.match(/Phone:\s*([^\n]+)/);
     const emailMatch = contactInfo?.match(/Email:\s*([^\n]+)/);

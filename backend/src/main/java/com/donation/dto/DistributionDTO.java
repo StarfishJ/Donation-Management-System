@@ -1,45 +1,46 @@
 package com.donation.dto;
 
+import java.time.LocalDateTime;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import java.time.LocalDateTime;
 
 /**
- * 分发记录数据传输对象
- * 用于前后端数据传输
+ * Distribution record data transfer object
+ * Used for data transfer between frontend and backend
  */
 public class DistributionDTO {
     
     private Long id;
     
-    @NotNull(message = "捐赠记录ID不能为空")
+    @NotNull(message = "Donation record ID cannot be empty")
     private Long donationId;
     
-    @NotNull(message = "分发数量不能为空")
-    @Positive(message = "分发数量必须大于0")
+    @NotNull(message = "Distribution quantity cannot be empty")
+    @Positive(message = "Distribution quantity must be greater than 0")
     private Double quantityDistributed;
     
-    @NotNull(message = "接收者姓名不能为空")
-    @Size(max = 100, message = "接收者姓名长度不能超过100个字符")
+    @NotNull(message = "Recipient name cannot be empty")
+    @Size(max = 100, message = "Recipient name length cannot exceed 100 characters")
     private String recipientName;
     
-    @NotNull(message = "接收者联系方式不能为空")
-    @Size(max = 200, message = "接收者联系方式长度不能超过200个字符")
+    @NotNull(message = "Recipient contact cannot be empty")
+    @Size(max = 200, message = "Recipient contact length cannot exceed 200 characters")
     private String recipientContact;
     
-    @Size(max = 200, message = "接收者信息长度不能超过200个字符")
+    @Size(max = 200, message = "Recipient information length cannot exceed 200 characters")
     private String recipientInfo;
     
     private LocalDateTime distributionDate;
     
     private String notes;
     
-    // 关联信息
+    // Associated information
     private String donationType;
     private String donorName;
     
-    // 构造函数
+    // Constructor
     public DistributionDTO() {}
     
     public DistributionDTO(Long donationId, Double quantityDistributed, String recipientInfo, String notes) {
@@ -49,7 +50,7 @@ public class DistributionDTO {
         this.notes = notes;
     }
     
-    // Getter 和 Setter 方法
+    // Getter and setter methods
     public Long getId() {
         return id;
     }
@@ -131,6 +132,7 @@ public class DistributionDTO {
     }
     
     @Override
+    //toString method
     public String toString() {
         return "DistributionDTO{" +
                 "id=" + id +

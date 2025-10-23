@@ -346,21 +346,6 @@ The project includes three sample CSV files for testing:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-## 📞 Contact
-
-For questions or suggestions, please contact:
-
-- Project Issues: [GitHub Issues](https://github.com/your-repo/issues)
-- Email: your-email@example.com
-
-## 🙏 Acknowledgments
-
-Thanks to all developers and testers who contributed to this project.
-
----
 
 **Note**: Please ensure to modify default database passwords and other sensitive configuration information in production environments.

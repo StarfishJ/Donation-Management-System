@@ -23,20 +23,20 @@ import com.donation.service.DonorService;
 import jakarta.validation.Valid;
 
 /**
- * 捐赠者控制器
- * 处理捐赠者相关的HTTP请求
+ * Donor Controller
+ * Handles donor record related HTTP requests
  */
 @RestController
 @RequestMapping("/api/donors")
-@CrossOrigin(origins = "http://localhost:3000") // 允许前端访问
+@CrossOrigin(origins = "http://localhost:3000") // allow frontend access
 public class DonorController {
     
     @Autowired
     private DonorService donorService;
     
     /**
-     * 获取所有捐赠者
-     * @return 捐赠者列表
+    *Get all donors
+     * @return donor list
      */
     @GetMapping
     public ResponseEntity<List<DonorDTO>> getAllDonors() {
@@ -45,9 +45,9 @@ public class DonorController {
     }
     
     /**
-     * 根据ID获取捐赠者
-     * @param id 捐赠者ID
-     * @return 捐赠者信息
+    * Get donor by ID
+     * @param id donor ID
+     * @return donor information
      */
     @GetMapping("/{id}")
     public ResponseEntity<DonorDTO> getDonorById(@PathVariable Long id) {
@@ -57,9 +57,9 @@ public class DonorController {
     }
     
     /**
-     * 根据姓名搜索捐赠者
-     * @param name 捐赠者姓名
-     * @return 匹配的捐赠者列表
+    * Search donors by name
+     * @param name donor name
+     * @return list of donors matching the name
      */
     @GetMapping("/search")
     public ResponseEntity<List<DonorDTO>> searchDonorsByName(@RequestParam String name) {
@@ -68,9 +68,9 @@ public class DonorController {
     }
     
     /**
-     * 创建新捐赠者
-     * @param donorDTO 捐赠者信息
-     * @return 创建的捐赠者信息
+    * Create new donor
+     * @param donorDTO donor information
+     * @return created donor information
      */
     @PostMapping
     public ResponseEntity<DonorDTO> createDonor(@Valid @RequestBody DonorDTO donorDTO) {
@@ -83,10 +83,10 @@ public class DonorController {
     }
     
     /**
-     * 更新捐赠者信息
-     * @param id 捐赠者ID
-     * @param donorDTO 更新的捐赠者信息
-     * @return 更新后的捐赠者信息
+    * Update donor information
+     * @param id donor ID
+     * @param donorDTO updated donor information
+     * @return updated donor information
      */
     @PutMapping("/{id}")
     public ResponseEntity<DonorDTO> updateDonor(@PathVariable Long id, 
@@ -101,9 +101,9 @@ public class DonorController {
     }
     
     /**
-     * 删除捐赠者
-     * @param id 捐赠者ID
-     * @return 删除结果
+     * Delete donor
+     * @param id donor ID
+     * @return deletion result
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDonor(@PathVariable Long id) {
@@ -113,8 +113,8 @@ public class DonorController {
     }
     
     /**
-     * 获取捐赠者总数
-     * @return 捐赠者总数
+    * Get total number of donors
+     * @return total number of donors
      */
     @GetMapping("/count")
     public ResponseEntity<Long> getTotalDonorsCount() {

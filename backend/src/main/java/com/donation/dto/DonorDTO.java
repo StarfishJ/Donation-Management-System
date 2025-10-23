@@ -1,30 +1,31 @@
 package com.donation.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 /**
- * 捐赠者数据传输对象
- * 用于前后端数据传输
+ * Donor data transfer object
+ * Used for data transfer between frontend and backend
  */
 public class DonorDTO {
     
     private Long id;
     
-    @NotBlank(message = "捐赠者姓名不能为空")
-    @Size(max = 100, message = "姓名长度不能超过100个字符")
+    @NotBlank(message = "Donor name cannot be empty")
+    @Size(max = 100, message = "Name length cannot exceed 100 characters")
     private String name;
     
-    @Size(max = 200, message = "联系信息长度不能超过200个字符")
+    @Size(max = 200, message = "Contact information length cannot exceed 200 characters")
     private String contactInfo;
     
     private LocalDateTime createdAt;
     
     private List<DonationDTO> donations;
     
-    // 构造函数
+    // constructor
     public DonorDTO() {}
     
     public DonorDTO(String name, String contactInfo) {
@@ -32,7 +33,7 @@ public class DonorDTO {
         this.contactInfo = contactInfo;
     }
     
-    // Getter 和 Setter 方法
+    // Getter and setter methods
     public Long getId() {
         return id;
     }

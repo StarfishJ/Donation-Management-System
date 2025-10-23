@@ -4,21 +4,21 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * 捐赠者报告数据传输对象
- * 用于捐赠者报告的展示
+ * Donor report data transfer object
+ * Used for donor report presentation
  */
 public class DonorReportDTO {
     
-    private Long donorId;           // 捐赠者ID
-    private String donorName;       // 捐赠者姓名
-    private String contactInfo;     // 联系信息
-    private LocalDateTime firstDonationDate; // 首次捐赠日期
-    private LocalDateTime lastDonationDate;  // 最近捐赠日期
-    private Integer totalDonations; // 总捐赠次数
-    private Double totalValue;      // 总捐赠价值
-    private List<DonationSummaryDTO> donationSummaries; // 捐赠汇总
+    private Long donorId;           // donor ID
+    private String donorName;       // donor name
+    private String contactInfo;     // contact information
+    private LocalDateTime firstDonationDate; // first donation date
+    private LocalDateTime lastDonationDate;  // last donation date
+    private Integer totalDonations; // total donations
+    private Double totalValue;      // total value
+    private List<DonationSummaryDTO> donationSummaries; // donation summaries
     
-    // 构造函数
+    // constructor
     public DonorReportDTO() {}
     
     public DonorReportDTO(Long donorId, String donorName, String contactInfo,
@@ -33,7 +33,7 @@ public class DonorReportDTO {
         this.totalValue = totalValue;
     }
     
-    // Getter 和 Setter 方法
+    // Getter and setter methods
     public Long getDonorId() {
         return donorId;
     }
@@ -112,7 +112,7 @@ public class DonorReportDTO {
     }
     
     /**
-     * 捐赠汇总内部类
+     * Donation summary inner class
      */
     public static class DonationSummaryDTO {
         private String donationType;
@@ -120,7 +120,7 @@ public class DonorReportDTO {
         private Double totalQuantity;
         private String unit;
         
-        // 构造函数
+        // constructor
         public DonationSummaryDTO() {}
         
         public DonationSummaryDTO(String donationType, Integer count, Double totalQuantity, String unit) {
@@ -130,7 +130,7 @@ public class DonorReportDTO {
             this.unit = unit;
         }
         
-        // Getter 和 Setter 方法
+        // Getter and setter methods
         public String getDonationType() {
             return donationType;
         }

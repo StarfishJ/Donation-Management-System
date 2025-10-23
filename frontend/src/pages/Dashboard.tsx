@@ -77,7 +77,7 @@ const Dashboard: React.FC = () => {
     Remaining: '#E8EDF3',
   };
 
-  // 准备图表数据
+  // Prepare chart data
   const getDonationTypeData = () => {
     if (!statistics?.donationTypeStats) return [];
     return statistics.donationTypeStats.map((item: any) => ({
@@ -105,7 +105,7 @@ const Dashboard: React.FC = () => {
     const total = statistics.totalDonationValue || 0;
     const allocated = Math.min(statistics.totalDistributedValue || 0, total);
     const remaining = Math.max(total - allocated, 0);
-    // 若 total 为 0，返回空让占位提示
+    // If total is 0, return empty for placeholder
     if (total <= 0) return [];
     return [
       { type: 'Allocated', value: allocated },
@@ -239,7 +239,7 @@ const Dashboard: React.FC = () => {
                   </div>
                 );
               }
-              // 直接把百分比转换为 0-100 的数值，避免回调取值差异导致显示 0
+              // Convert percentage to 0-100 value to avoid callback value differences
               const data = rows.map((r: any) => ({
                 type: r.type,
                 percentPct: Number(

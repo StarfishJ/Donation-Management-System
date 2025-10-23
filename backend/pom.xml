@@ -16,7 +16,7 @@
     <artifactId>donation-management-backend</artifactId>
     <version>1.0.0</version>
     <name>donation-management-backend</name>
-    <description>捐赠管理系统后端服务</description>
+    <description>Donation Management System Backend Service</description>
 
     <properties>
         <java.version>17</java.version>

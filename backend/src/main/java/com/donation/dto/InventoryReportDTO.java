@@ -1,18 +1,18 @@
 package com.donation.dto;
 
 /**
- * 库存报告数据传输对象
- * 用于库存报告的展示
+ * Inventory report data transfer object
+ * Used for inventory report presentation
  */
 public class InventoryReportDTO {
     
-    private String donationType;  // 捐赠类型
-    private Double totalReceived; // 总接收数量
-    private Double totalDistributed; // 总分发数量
-    private Double remainingQuantity; // 剩余数量
-    private String unit; // 单位
+    private String donationType;  // donation type
+    private Double totalReceived; // total received quantity
+    private Double totalDistributed; // total distributed quantity
+    private Double remainingQuantity; // remaining quantity
+    private String unit; // unit
     
-    // 构造函数
+    // constructor
     public InventoryReportDTO() {}
     
     public InventoryReportDTO(String donationType, Double totalReceived, 
@@ -24,7 +24,7 @@ public class InventoryReportDTO {
         this.unit = unit;
     }
     
-    // Getter 和 Setter 方法
+    // Getter and setter methods
     public String getDonationType() {
         return donationType;
     }

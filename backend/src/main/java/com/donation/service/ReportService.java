@@ -199,7 +199,7 @@ public class ReportService {
                 public final Long newCount = donorRepository.countByCreatedAtAfter(LocalDateTime.now().minusDays(window));
             };
             
-            // 暂时不提供月度趋势数据，等有真实数据时再添加
+            // Monthly trends data is not provided yet, will be added when real data is available
             public final List<Object> monthlyTrends = new ArrayList<>();
         };
     }

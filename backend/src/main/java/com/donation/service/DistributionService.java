@@ -29,8 +29,8 @@ public class DistributionService {
     private DonationRepository donationRepository;
     
     /**
-     * 获取所有分发记录
-     * @return 分发记录列表
+     * Get all distribution records
+     * @return distribution record list
      */
     @Transactional(readOnly = true)
     public List<DistributionDTO> getAllDistributions() {
@@ -40,9 +40,9 @@ public class DistributionService {
     }
     
     /**
-     * 根据ID获取分发记录
-     * @param id 分发记录ID
-     * @return 分发记录信息
+     * Get distribution record by ID
+     * @param id distribution record ID
+     * @return distribution record information
      */
     @Transactional(readOnly = true)
     public Optional<DistributionDTO> getDistributionById(Long id) {
@@ -51,9 +51,9 @@ public class DistributionService {
     }
     
     /**
-     * 根据捐赠记录ID获取分发记录
-     * @param donationId 捐赠记录ID
-     * @return 该捐赠记录的所有分发记录
+     * Get distribution records by donation ID
+     * @param donationId donation record ID
+     * @return all distribution records for the donation
      */
     @Transactional(readOnly = true)
     public List<DistributionDTO> getDistributionsByDonationId(Long donationId) {
@@ -63,9 +63,9 @@ public class DistributionService {
     }
     
     /**
-     * 创建新分发记录
-     * @param distributionDTO 分发记录信息
-     * @return 创建的分发记录信息
+     * Create new distribution record
+     * @param distributionDTO distribution record information
+     * @return created distribution record information
      */
     public DistributionDTO createDistribution(DistributionDTO distributionDTO) {
         // Validate donation exists
@@ -84,10 +84,10 @@ public class DistributionService {
     }
     
     /**
-     * 更新分发记录
-     * @param id 分发记录ID
-     * @param distributionDTO 更新的分发记录信息
-     * @return 更新后的分发记录信息
+     * Update distribution record
+     * @param id distribution record ID
+     * @param distributionDTO updated distribution record information
+     * @return updated distribution record information
      */
     public Optional<DistributionDTO> updateDistribution(Long id, DistributionDTO distributionDTO) {
         return distributionRepository.findById(id)
@@ -101,9 +101,9 @@ public class DistributionService {
     }
     
     /**
-     * 删除分发记录
-     * @param id 分发记录ID
-     * @return 是否删除成功
+     * Delete distribution record
+     * @param id distribution record ID
+     * @return whether the deletion was successful
      */
     public boolean deleteDistribution(Long id) {
         if (distributionRepository.existsById(id)) {
@@ -114,9 +114,9 @@ public class DistributionService {
     }
     
     /**
-     * 获取指定捐赠记录的总分发数量
-     * @param donationId 捐赠记录ID
-     * @return 总分发数量
+     * Get total distributed quantity for a donation
+     * @param donationId donation record ID
+     * @return total distributed quantity
      */
     @Transactional(readOnly = true)
     public Double getTotalDistributedQuantity(Long donationId) {
@@ -124,9 +124,9 @@ public class DistributionService {
     }
     
     /**
-     * 获取指定捐赠记录的剩余数量
-     * @param donationId 捐赠记录ID
-     * @return 剩余数量
+     * Get remaining quantity for a donation
+     * @param donationId donation record ID
+     * @return remaining quantity
      */
     @Transactional(readOnly = true)
     public Double getRemainingQuantity(Long donationId) {
@@ -134,8 +134,8 @@ public class DistributionService {
     }
     
     /**
-     * 获取所有分发记录的汇总统计
-     * @return 分发统计信息
+     * Get summary statistics for all distribution records
+     * @return distribution summary information
      */
     @Transactional(readOnly = true)
     public Object[] getDistributionSummary() {
@@ -143,9 +143,9 @@ public class DistributionService {
     }
     
     /**
-     * 将实体转换为DTO
-     * @param distribution 分发记录实体
-     * @return 分发记录DTO
+     * Convert entity to DTO
+     * @param distribution distribution record entity
+     * @return distribution record DTO
      */
     private DistributionDTO convertToDTO(Distribution distribution) {
         DistributionDTO dto = new DistributionDTO();
@@ -158,7 +158,7 @@ public class DistributionService {
         dto.setDistributionDate(distribution.getDistributionDate());
         dto.setNotes(distribution.getNotes());
         
-        // 设置关联信息
+        // Set associated information
         if (distribution.getDonation() != null) {
             dto.setDonationType(distribution.getDonation().getDonationType());
             if (distribution.getDonation().getDonor() != null) {
@@ -170,9 +170,9 @@ public class DistributionService {
     }
     
     /**
-     * 将DTO转换为实体
-     * @param distributionDTO 分发记录DTO
-     * @return 分发记录实体
+     * Convert DTO to entity
+     * @param distributionDTO distribution record DTO
+     * @return distribution record entity
      */
     private Distribution convertToEntity(DistributionDTO distributionDTO) {
         Distribution distribution = new Distribution();

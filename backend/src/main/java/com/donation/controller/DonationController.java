@@ -22,20 +22,20 @@ import com.donation.service.DonationService;
 import jakarta.validation.Valid;
 
 /**
- * 捐赠记录控制器
- * 处理捐赠记录相关的HTTP请求
+ * Donation Controller
+ * Handles donation record related HTTP requests
  */
 @RestController
 @RequestMapping("/api/donations")
-@CrossOrigin(origins = "http://localhost:3000") // 允许前端访问
+@CrossOrigin(origins = "http://localhost:3000") // allow frontend access
 public class DonationController {
     
     @Autowired
     private DonationService donationService;
     
     /**
-     * 获取所有捐赠记录
-     * @return 捐赠记录列表
+    * Get all donation records
+     * @return donation record list
      */
     @GetMapping
     public ResponseEntity<List<DonationDTO>> getAllDonations() {
@@ -44,9 +44,9 @@ public class DonationController {
     }
     
     /**
-     * 根据ID获取捐赠记录
-     * @param id 捐赠记录ID
-     * @return 捐赠记录信息
+    * Get donation record by ID
+     * @param id donation record ID
+     * @return donation record information
      */
     @GetMapping("/{id}")
     public ResponseEntity<DonationDTO> getDonationById(@PathVariable Long id) {
@@ -56,9 +56,9 @@ public class DonationController {
     }
     
     /**
-     * 根据捐赠者ID获取捐赠记录
-     * @param donorId 捐赠者ID
-     * @return 该捐赠者的所有捐赠记录
+    * Get donation records by donor ID
+     * @param donorId donor ID
+     * @return all donation records for the donor
      */
     @GetMapping("/donor/{donorId}")
     public ResponseEntity<List<DonationDTO>> getDonationsByDonorId(@PathVariable Long donorId) {
@@ -67,9 +67,9 @@ public class DonationController {
     }
     
     /**
-     * 根据捐赠类型获取捐赠记录
-     * @param type 捐赠类型
-     * @return 该类型的所有捐赠记录
+    * Get donation records by donation type
+     * @param type donation type
+     * @return all donation records for the donation type
      */
     @GetMapping("/type/{type}")
     public ResponseEntity<List<DonationDTO>> getDonationsByType(@PathVariable String type) {
@@ -78,9 +78,9 @@ public class DonationController {
     }
     
     /**
-     * 创建新捐赠记录
-     * @param donationDTO 捐赠记录信息
-     * @return 创建的捐赠记录信息
+    * Create new donation record
+     * @param donationDTO donation record information
+     * @return created donation record information
      */
     @PostMapping
     public ResponseEntity<DonationDTO> createDonation(@Valid @RequestBody DonationDTO donationDTO) {
@@ -93,10 +93,10 @@ public class DonationController {
     }
     
     /**
-     * 更新捐赠记录
-     * @param id 捐赠记录ID
-     * @param donationDTO 更新的捐赠记录信息
-     * @return 更新后的捐赠记录信息
+     * Update donation record
+     * @param id donation record ID
+     * @param donationDTO updated donation record information
+     * @return updated donation record information
      */
     @PutMapping("/{id}")
     public ResponseEntity<DonationDTO> updateDonation(@PathVariable Long id, 
@@ -111,9 +111,9 @@ public class DonationController {
     }
     
     /**
-     * 删除捐赠记录
-     * @param id 捐赠记录ID
-     * @return 删除结果
+     * Delete donation record
+     * @param id donation record ID
+     * @return deletion result
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDonation(@PathVariable Long id) {
@@ -123,9 +123,9 @@ public class DonationController {
     }
     
     /**
-     * 获取指定捐赠类型的总数量
-     * @param type 捐赠类型
-     * @return 该类型的总数量
+    * Get total quantity for a donation type
+     * @param type donation type
+     * @return total quantity for the donation type
      */
     @GetMapping("/type/{type}/total")
     public ResponseEntity<Double> getTotalQuantityByType(@PathVariable String type) {
@@ -134,8 +134,8 @@ public class DonationController {
     }
     
     /**
-     * 获取所有捐赠类型的库存汇总
-     * @return 按类型分组的库存统计
+    * Get inventory summary for all donation types
+     * @return inventory summary by donation type
      */
     @GetMapping("/inventory/summary")
     public ResponseEntity<List<Object[]>> getInventorySummary() {

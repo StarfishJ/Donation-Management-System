@@ -12,29 +12,29 @@ import org.springframework.stereotype.Repository;
 import com.donation.entity.Donor;
 
 /**
- * 捐赠者数据访问层
- * 提供捐赠者相关的数据库操作
+ * Donor Repository
+ * Provides database operations for donor records
  */
 @Repository
 public interface DonorRepository extends JpaRepository<Donor, Long> {
     
     /**
-     * 根据姓名查找捐赠者（模糊查询）
-     * @param name 捐赠者姓名
-     * @return 匹配的捐赠者列表
+    * Find donors by name (fuzzy search)
+     * @param name donor name
+     * @return matching donor list
      */
     List<Donor> findByNameContainingIgnoreCase(String name);
     
     /**
-     * 根据姓名精确查找捐赠者
-     * @param name 捐赠者姓名
-     * @return 匹配的捐赠者
+    * Find donors by name (exact)
+     * @param name donor name
+     * @return matching donor
      */
     Optional<Donor> findByName(String name);
     
     /**
-     * 获取捐赠者总数
-     * @return 捐赠者总数
+    * Get total number of donors
+     * @return total number of donors
      */
     @Query("SELECT COUNT(d) FROM Donor d")
     Long countTotalDonors();
@@ -45,9 +45,9 @@ public interface DonorRepository extends JpaRepository<Donor, Long> {
     Long countByCreatedAtAfter(LocalDateTime since);
     
     /**
-     * 根据捐赠者ID获取其所有捐赠记录
-     * @param donorId 捐赠者ID
-     * @return 捐赠者信息及其捐赠记录
+    * Get all donations for a donor
+     * @param donorId donor ID
+     * @return donor information and its donations
      */
     @Query("SELECT d FROM Donor d LEFT JOIN FETCH d.donations WHERE d.id = :donorId")
     Optional<Donor> findByIdWithDonations(@Param("donorId") Long donorId);

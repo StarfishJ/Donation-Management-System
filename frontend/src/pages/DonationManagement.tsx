@@ -67,7 +67,7 @@ const DonationManagement: React.FC = () => {
 
   const handleEdit = (donation: Donation) => {
     setEditingDonation(donation);
-    // 只设置表单需要的字段，排除只读字段
+    // only set the fields needed, exclude readonly fields
     form.setFieldsValue({
       donorId: donation.donorId,
       donationType: donation.donationType,

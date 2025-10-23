@@ -1,43 +1,44 @@
 package com.donation.dto;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import java.time.LocalDateTime;
-import java.util.List;
 
 /**
- * 捐赠记录数据传输对象
- * 用于前后端数据传输
+ * Donation record data transfer object
+ * Used for data transfer between frontend and backend
  */
 public class DonationDTO {
     
     private Long id;
     
-    @NotNull(message = "捐赠者ID不能为空")
+    @NotNull(message = "Donor ID cannot be empty")
     private Long donorId;
     
-    @NotBlank(message = "捐赠类型不能为空")
-    @Size(max = 50, message = "捐赠类型长度不能超过50个字符")
+    @NotBlank(message = "Donation type cannot be empty")
+    @Size(max = 50, message = "Donation type length cannot exceed 50 characters")
     private String donationType;
     
-    @NotNull(message = "捐赠数量不能为空")
-    @Positive(message = "捐赠数量必须大于0")
+    @NotNull(message = "Donation amount can't be empty")
+    @Positive(message = "Donation quantity must be greater than 0")
     private Double quantity;
     
-    @Size(max = 20, message = "单位长度不能超过20个字符")
+    @Size(max = 20, message = "Unit length cannot exceed 20 characters")
     private String unit = "pieces";
     
     private String description;
     
     private LocalDateTime donationDate;
     
-    // 关联信息
+    // associated information
     private String donorName;
     private List<DistributionDTO> distributions;
     
-    // 构造函数
+    // constructor
     public DonationDTO() {}
     
     public DonationDTO(Long donorId, String donationType, Double quantity, String unit, String description) {
@@ -48,7 +49,7 @@ public class DonationDTO {
         this.description = description;
     }
     
-    // Getter 和 Setter 方法
+    // Getter and setter methods
     public Long getId() {
         return id;
     }

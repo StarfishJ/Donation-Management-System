@@ -1,21 +1,22 @@
 package com.donation.service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.donation.dto.DonationDTO;
 import com.donation.entity.Donation;
 import com.donation.entity.Donor;
 import com.donation.repository.DonationRepository;
 import com.donation.repository.DonorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
- * 捐赠服务层
- * 处理捐赠记录相关的业务逻辑
+ * Donation Service Layer
+ * Handles business logic for donation records
  */
 @Service
 @Transactional
@@ -28,8 +29,8 @@ public class DonationService {
     private DonorRepository donorRepository;
     
     /**
-     * 获取所有捐赠记录
-     * @return 捐赠记录列表
+     * Get all donation records
+     * @return donation record list
      */
     @Transactional(readOnly = true)
     public List<DonationDTO> getAllDonations() {
@@ -39,9 +40,9 @@ public class DonationService {
     }
     
     /**
-     * 根据ID获取捐赠记录
-     * @param id 捐赠记录ID
-     * @return 捐赠记录信息
+     * Get donation record by ID
+     * @param id donation record ID
+     * @return donation record information
      */
     @Transactional(readOnly = true)
     public Optional<DonationDTO> getDonationById(Long id) {
@@ -50,9 +51,9 @@ public class DonationService {
     }
     
     /**
-     * 根据捐赠者ID获取捐赠记录
-     * @param donorId 捐赠者ID
-     * @return 该捐赠者的所有捐赠记录
+     * Get donation records by donor ID 
+     * @param donorId donor ID
+     * @return all donation records for the donor
      */
     @Transactional(readOnly = true)
     public List<DonationDTO> getDonationsByDonorId(Long donorId) {
@@ -62,9 +63,9 @@ public class DonationService {
     }
     
     /**
-     * 根据捐赠类型获取捐赠记录
-     * @param donationType 捐赠类型
-     * @return 该类型的所有捐赠记录
+     * Get donation records by donation type
+     * @param donationType donation type
+     * @return all donation records for the donation type
      */
     @Transactional(readOnly = true)
     public List<DonationDTO> getDonationsByType(String donationType) {
@@ -74,14 +75,14 @@ public class DonationService {
     }
     
     /**
-     * 创建新捐赠记录
-     * @param donationDTO 捐赠记录信息
-     * @return 创建的捐赠记录信息
+     * Create new donation record
+     * @param donationDTO donation record information
+     * @return created donation record information
      */
     public DonationDTO createDonation(DonationDTO donationDTO) {
-        // 验证捐赠者是否存在
+        // Validate donor exists
         Donor donor = donorRepository.findById(donationDTO.getDonorId())
-                .orElseThrow(() -> new RuntimeException("捐赠者不存在: " + donationDTO.getDonorId()));
+                .orElseThrow(() -> new RuntimeException("Donor not found: " + donationDTO.getDonorId()));
         
         Donation donation = convertToEntity(donationDTO);
         Donation savedDonation = donationRepository.save(donation);
@@ -89,10 +90,10 @@ public class DonationService {
     }
     
     /**
-     * 更新捐赠记录
-     * @param id 捐赠记录ID
-     * @param donationDTO 更新的捐赠记录信息
-     * @return 更新后的捐赠记录信息
+     * Update donation record
+     * @param id donation record ID
+     * @param donationDTO updated donation record information
+     * @return updated donation record information
      */
     public Optional<DonationDTO> updateDonation(Long id, DonationDTO donationDTO) {
         return donationRepository.findById(id)
@@ -107,9 +108,9 @@ public class DonationService {
     }
     
     /**
-     * 删除捐赠记录
-     * @param id 捐赠记录ID
-     * @return 是否删除成功
+     * Delete donation record
+     * @param id donation record ID
+     * @return whether the deletion was successful
      */
     public boolean deleteDonation(Long id) {
         if (donationRepository.existsById(id)) {
@@ -120,9 +121,9 @@ public class DonationService {
     }
     
     /**
-     * 获取指定捐赠类型的总数量
-     * @param donationType 捐赠类型
-     * @return 该类型的总数量
+     * Get total quantity for a donation type
+     * @param donationType donation type
+     * @return total quantity for the donation type
      */
     @Transactional(readOnly = true)
     public Double getTotalQuantityByType(String donationType) {
@@ -130,8 +131,8 @@ public class DonationService {
     }
     
     /**
-     * 获取所有捐赠类型的库存汇总
-     * @return 按类型分组的库存统计
+     * Get inventory summary for all donation types
+     * @return inventory summary by donation type
      */
     @Transactional(readOnly = true)
     public List<Object[]> getInventorySummary() {
@@ -139,9 +140,9 @@ public class DonationService {
     }
     
     /**
-     * 将实体转换为DTO
-     * @param donation 捐赠记录实体
-     * @return 捐赠记录DTO
+     * Convert entity to DTO
+     * @param donation donation record entity
+     * @return donation record DTO
      */
     private DonationDTO convertToDTO(Donation donation) {
         DonationDTO dto = new DonationDTO();
@@ -153,7 +154,7 @@ public class DonationService {
         dto.setDescription(donation.getDescription());
         dto.setDonationDate(donation.getDonationDate());
         
-        // 设置捐赠者姓名
+        // Set donor name
         if (donation.getDonor() != null) {
             dto.setDonorName(donation.getDonor().getName());
         }
@@ -162,9 +163,9 @@ public class DonationService {
     }
     
     /**
-     * 将DTO转换为实体
-     * @param donationDTO 捐赠记录DTO
-     * @return 捐赠记录实体
+     * Convert DTO to entity
+     * @param donationDTO donation record DTO
+     * @return donation record entity
      */
     private Donation convertToEntity(DonationDTO donationDTO) {
         Donation donation = new Donation();
